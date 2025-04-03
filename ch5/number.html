@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>넘버/슬라이드</title>
+</head>
+<body>
+  <ul>
+    <li>
+      <label><input type="checkbox" value="s_3">선물용 3kg</label>
+      <input type="number" min="0" max="5">개 (최대 5개)
+    </li>
+    <li>
+      <label><input type="checkbox" value="s_5">선물용 5kg</label>
+      <input type="number" min="0" max="3" value="1">개 (최대 3개)
+    </li>
+  </ul>
+  <h3>소리 조절하기</h3>
+  <form>
+    <input type="range" min="0" max="100" step="1" value="20" oninput="document.getElementById('selected-value').innerText = this.value">
+    <span id="selected-value">20</span>
+  </form>
+</body>
+</html>
