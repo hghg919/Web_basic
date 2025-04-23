@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>표만들기</title>
+    <style>
+        table, th, td {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+        th, td { padding:10px 20px;}
+    </style>
+</head>
+<body>
+    <h2>상품 구성</h2>
+    <table>
+        <colgroup>
+            <col style="background-color: #eee;">
+            <col>
+            <col span="2" style="width: 150px;">
+        </colgroup>
+        <caption>선물용과 가정용 상품 구성</caption>
+        <thead>
+            <tr>
+                <th>용도</th>
+                <th>중량</th>
+                <th>개수</th>
+                <th>가격</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2">선물용</td>
+                <td>3Kg</td>
+                <td>11~16과</td>
+                <td>35,000원</td>
+            </tr>
+            <tr>
+                <td>5kg</td>
+                <td>18~26과</td>
+                <td>52,000원</td>
+            </tr>
+            <tr>
+                <td rowspan="2">가정용</td>
+                <td>3kg</td>
+                <td>11~16과</td>
+                <td>30,000원</td>
+            </tr>
+            <tr>
+                <td>5kg</td>
+                <td>18~26과</td>
+                <td>47,000원</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <img src="images/tangerines.jpg" alt="레드향">
+    <h1>레드향</h1>
+    <p>원래 크기의 이미지</p>
+    <img src="images/salad.jpg" alt="레드향">
+    <p>width="50%, height="50%"으로 지정한 이미지</p>
+    <img src="images/salad.jpg" alt="레드향" width="50%">
+    <p>width="150"으로 지정한 이미지</p>
+    <img src="images/salad.jpg" alt="레드향" width="150">
+    <br>
+    <figure>
+        <img src="images/spring.png" alt="제주의 봄">
+        <img src="images/summer.png" alt="제주의 여름">
+        <img src="images/fall.png" alt="제주의 가을">
+        <img src="images/winter.png" alt="제주의 겨울">
+        <figcaption>제주도의 사계절</figcaption>
+    </figure>
+    <br>
+    <img src="images/bg.jpg" srcset="images, images/br.jpg 1000w" alt="하늘위로올라가는 풍선">
+</body>
+</html>
