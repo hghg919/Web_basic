@@ -24,6 +24,10 @@ h1 {
   border-radius: 0.6em;
   box-shadow: 0 0 2.4em rgba(25, 0, 58, 0.1);
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .card .img-container {
   width:8em;
@@ -46,6 +50,12 @@ h1 {
   margin: 0.5em 0 2em 0;
   letter-spacing: 2px;
 }
+.social{
+  width: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
 .card:hover {
   background: linear-gradient(#6045ea, #8567f7);
   color: #fff;
@@ -59,4 +69,23 @@ a {
 }
 a:hover {
   color: #fff;
+}
+@media screen and (min-width: 1024px){
+  #container {
+    padding: 1em;
+  }
+  .row{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2em 1em;
+    text-align: center;
+  }
+  .card {
+    padding: 5em 1em;
+  }
+  .column{
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    padding: 0 1em;
+  }
 }
