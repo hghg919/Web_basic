@@ -5,10 +5,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>prompt</title>
 </head>
-<body>
-	<!-- Do it! 기본값이 있는 프롬프트 창 만들기 -->
+<body>	
 	<script>
-		let name = prompt("이름을 입력하세요.", "아무개");
+		// Do it! 상수 사용해서 원 넓이 구하기
+		const PI = 3.14;
+		let radius = prompt("반지름을 입력하세요.");
+		let area = PI * radius * radius;
+		document.write(area);
 	</script>
 </body>
 </html>
