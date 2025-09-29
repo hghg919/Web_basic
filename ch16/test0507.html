@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>배경색 변경</title>
+  <style>
+    body {
+      transition: background-color 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <button id="colorBtn">배경색 변경</button>
+
+  <script>
+    const button = document.getElementById('colorBtn');
+    const colors = ['#FF6347', '#4CAF50', '#2196F3', '#FFD700', '#9C27B0'];
+    let index = 0;
+
+    button.addEventListener('click', () => {
+      document.body.style.backgroundColor = colors[index];
+      index = (index + 1) % colors.length;  // 색깔 배열 순환
+    });
+  </script>
+</body>
+</html>
