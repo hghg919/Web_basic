@@ -1,0 +1,99 @@
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+/* 기본 스타일 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif; /* 한국어 지원 폰트 */ /*괜찮은 폰트 있으면 적용할 필요가 있음*/
+    overflow: hidden; /* 배경 이미지가 스크롤 되지 않도록 */
+}
+
+/* 배경 이미지 슬라이더 컨테이너 */
+.background-slider {
+    position: fixed; /* 뷰포트에 고정 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover; /* 이미지가 배경을 꽉 채우도록 */
+    background-position: center; /* 이미지를 중앙에 정렬 */
+    transition: background-image 1s ease-in-out; /* 배경 이미지 전환 효과 */
+    z-index: -1; /* 다른 콘텐츠 뒤로 보냄 */
+}
+
+/* 메인 콘텐츠 (제목, 버튼) 컨테이너 역할 */
+.main-content {
+    width: 100%;
+    height: 100%;
+    position: relative; /* 자식 요소의 absolute 위치 기준 */
+}
+
+/* h1 (제목) 스타일 수정 */
+.main-content h1 {
+    position: absolute; /* 컨테이너를 기준으로 절대 위치 */
+    top: 25%; /* 화면 상단에서 25% 지점 */
+    left: 50%;
+    transform: translate(-50%, -50%); /* X, Y축 모두 중앙 정렬 */
+    
+    color: white; /* 글자색 흰색 */ /*글자색 수정 및 효과 추가 필요*/
+    font-size: 5rem; /* 글자 크기 키움 */ /*글자 크기 고민 중*/
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* 배경 위에 글자가 잘 보이도록 그림자 효과 추가 */ /*그림자 효과 고민 중*/
+
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    letter-spacing: 2px;
+}
+
+/* start-button (버튼) 스타일 */
+.start-button {
+    /* --- 위치를 잡는 핵심 코드 --- */
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    /* --- 애니메이션을 위한 속성 --- */
+    z-index: 1;
+    overflow: hidden;
+    
+    /* --- 기본 디자인 코드 --- */
+    display: inline-block;
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 5px; /* 둥근 모서리 */
+    padding: 15px 40px; /* 원래 패딩으로 */
+    transition: color 0.4s ease;
+}
+
+/* 마우스를 올렸을 때 채워질 배경(게이지) 스타일 */
+.start-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0; /* 처음에는 너비가 0 */
+    height: 100%;
+    background-color: white;
+    z-index: -1;
+    transition: width 0.4s ease;
+}
+
+.start-button:hover {
+    color: black;
+}
+
+.start-button:hover::before {
+    width: 100%;
+}
