@@ -12,7 +12,7 @@ html, body {
 
 body {
     font-family: 'Noto Sans KR', sans-serif; /* 한국어 지원 폰트 */ /*괜찮은 폰트 있으면 적용할 필요가 있음*/
-    overflow: hidden; /* 배경 이미지가 스크롤 되지 않도록 */
+    /* overflow: hidden; 배경 이미지가 스크롤 되지 않도록 */
 }
 
 /* 배경 이미지 슬라이더 컨테이너 */
@@ -96,4 +96,217 @@ body {
 
 .start-button:hover::before {
     width: 100%;
+}
+
+/* ========================================= */
+/* --- 2. 상세 페이지 (detail.html) 스타일 --- */
+/* (풀스크린 갤러리 + 2단 콘텐츠) */
+/* ========================================= */
+
+/* --- [1페이지] 풀스크린 섹션 --- */
+.full-page-section.page-one {
+    height: 100vh; /* 화면 전체 높이를 차지 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative; /* 스크롤 유도 아이콘의 기준점 */
+    
+    /* 💡 여기에 1페이지 배경 이미지를 넣을 수 있습니다 💡 */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/tongyeong-bg.jpg') no-repeat center center/cover;
+    color: white;
+}
+
+/* 1페이지의 제목 */
+.detail-header-fullscreen {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.detail-header-fullscreen h2 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+.detail-header-fullscreen p {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* 1페이지의 갤러리 (풀스크린용) */
+.detail-gallery-fullscreen {
+    /* 갤러리 전체 크기 조절 */
+    width: 100%;
+    max-width: 800px;
+    background-color: rgba(0, 0, 0, 0.3); /* 갤러리 배경 반투명 */
+    padding: 1rem;
+    border-radius: 8px;
+}
+.detail-gallery-fullscreen .main-image-container img {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.detail-gallery-fullscreen .thumbnail-list {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.detail-gallery-fullscreen .thumbnail-list .thumbnail {
+    width: 100px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+.detail-gallery-fullscreen .thumbnail-list .thumbnail:hover,
+.thumbnail-list .thumbnail.active {
+    border-color: #fff; /* 흰색 테두리로 변경 */
+}
+
+
+/* --- [2페이지] 콘텐츠 섹션 --- */
+.content-section.page-two {
+    /* 이 컨테이너가 2단 레이아웃의 기준이 됨 */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* 1페이지 스크롤 후 바로 붙어서 나옴 */
+    padding: 3rem 1rem; /* 위아래, 좌우 여백 */
+}
+
+/* 2단 레이아웃 (기존과 동일) */
+.detail-main-layout {
+    display: flex;
+    gap: 2rem;
+}
+.detail-content-left {
+    flex: 3;
+    min-width: 0;
+}
+.detail-sidebar-right {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* 2페이지 상세 설명 (기존과 동일) */
+.detail-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+.detail-content p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+/* 2페이지 사이드바 (기존과 동일) */
+.sidebar-info-box {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background-color: #fcfcfc;
+    position: sticky;
+    top: 2rem; 
+}
+
+.sidebar-info-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.sidebar-info-box ul {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-info-box li {
+    display: flex;
+    flex-wrap: wrap; /* 모바일에서 줄바꿈되도록 */
+    border-bottom: 1px solid #f0f0f0;
+    padding: 1rem 0;
+}
+
+.sidebar-info-box li strong {
+    flex-basis: 100px; /* 아이콘+제목 너비 */
+    font-weight: 600;
+}
+
+.sidebar-info-box li span {
+    flex: 1; /* 나머지 공간을 모두 차지 */
+    color: #555;
+}
+
+/* 홈페이지 가기 버튼 */
+.btn-homepage {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.btn-homepage:hover {
+    background-color: #0056b3;
+}
+
+/* --- 스크롤 유도 아이콘 --- */
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+}
+.scroll-down-indicator .arrow {
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(45deg);
+    margin-top: 5px;
+    animation: bounce 2s infinite; /* 통통 튀는 애니메이션 */
+}
+/* 애니메이션 효과 */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) rotate(45deg);
+    }
+    40% {
+        transform: translateY(-10px) rotate(45deg);
+    }
+    60% {
+        transform: translateY(-5px) rotate(45deg);
+    }
+}
+
+
+/* --- 반응형 웹 디자인 (수정) --- */
+@media (max-width: 992px) {
+    /* 2페이지 2단 -> 1단 변경 (기존과 동일) */
+    .detail-main-layout {
+        flex-direction: column;
+    }
+    .detail-sidebar-right {
+        min-width: 100%;
+    }
+    .sidebar-info-box {
+        position: static;
+    }
+
+    /* 1페이지 갤러리 크기 조절 */
+    .detail-gallery-fullscreen {
+        max-width: 90%;
+    }
+    .detail-gallery-fullscreen .thumbnail-list {
+        flex-wrap: wrap; /* 썸네일이 많으면 줄바꿈 */
+    }
 }
