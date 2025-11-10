@@ -45,7 +45,16 @@
 
   <script>
     // Do it! 체크 박스에 체크하면 버튼 활성화하기 - toggle() 함수 사용
+    document.addEventListener('DOMContentLoaded', function(){
+      const checkbox = document.querySelector('#agree');
+      const proceedButton = document.querySelector('#proceed');
 
+      checkbox.addEventListener('change', function(){
+        proceedButton.classList.toggle('enabled', this.checked);
+        proceedButton.classList.toggle('disabled', !this.checked);
+        proceedButton.disabled = !this.checked;
+      });
+    });
   </script>
 </body>
 </html>

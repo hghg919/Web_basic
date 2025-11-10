@@ -34,7 +34,15 @@
 	
 	<script>
 		// Do it! DOM에서 스타일 수정하기
-
+		let rect = document.querySelector("#rect");
+		rect.addEventListener("mouseover", () => {
+			rect.style.backgroundColor = "green";
+			rect.style.borderRadius = "50%";
+		});
+		rect.addEventListener("mouseout", () => {
+			rect.style.backgroundColor = "";
+			rect.style.borderRadius = "";
+		});
 	</script>
 </body>
 </html>

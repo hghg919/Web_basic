@@ -32,6 +32,10 @@
   
 	<script>
     // Do it! 이벤트 리스너 안에서 함수 선언하기
+    let cat = document.querySelector("#cat");
+    
+		cat.addEventListener("mouseover", () => {cat.src = "images/kitty-2.png";});
+		cat.addEventListener("mouseout", () => {cat.src = "images/kitty-1.png";});
 
 	</script>
 </body>

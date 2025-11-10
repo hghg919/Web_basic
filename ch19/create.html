@@ -18,5 +18,28 @@
     <hr>  
     <ul id="itemList"></ul>  
   </div>
+
+  <script>
+    
+    function newRegister() {
+      const newItem = document.createElement("li");  
+      const subject = document.querySelector("#subject");  
+      const newText = document.createTextNode(subject.value); 
+      newItem.appendChild(newText);   
+      
+      const itemList = document.querySelector("#itemList");  
+      itemList.appendChild(newItem);
+      
+      subject.value="";
+    }
+    
+    document.addEventListener("DOMContentLoaded", function() { 
+      const button = document.querySelector("button");
+      button.addEventListener("click", function(event) {
+        event.preventDefault(); 
+        newRegister();  
+      });
+    });    
+  </script>
 </body>
 </html>

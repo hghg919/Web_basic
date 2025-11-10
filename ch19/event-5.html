@@ -9,7 +9,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
+    }    
     body {
       display: flex;
       justify-content: center;
@@ -32,7 +32,18 @@
   
 	<script>
     // Do it! 이벤트 리스너로 이벤트 처리하기
+		let cat = document.querySelector("#cat");
+    
+		cat.addEventListener("mouseover", changePic, false);
+    cat.addEventListener("mouseout", originPic, false);
+    
+    function changePic() {
+      cat.src = "images/kitty-2.png";
+    } 
 
+    function originPic() {
+      cat.src = "images/kitty-1.png";
+    }
 	</script>
 </body>
 </html>
