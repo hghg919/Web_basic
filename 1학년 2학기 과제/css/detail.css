@@ -1,0 +1,170 @@
+/* ========================================= */
+/* --- 3. detail.css (4단 스냅 스크롤) --- */
+/* ========================================= */
+
+/* 💡 스크롤 스냅 기능 (html 태그에 적용) */
+html {
+    scroll-snap-type: y mandatory;
+    
+    /* 💡 추가된 부분: 고정된 헤더가 콘텐츠를 가리지 않도록 
+       스냅 위치를 헤더 높이(약 4rem)만큼 아래로 내립니다. */
+    scroll-padding-top: 4rem; 
+}
+
+/* 각 섹션(페이지)의 공통 스타일 */
+.snap-page {
+    height: 100vh; /* 화면 높이를 100%로 채움 */
+    scroll-snap-align: start; /* 💡 스크롤 스냅 */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    padding: 0;
+    position: relative;
+    width: 100%;
+}
+
+/* 페이지별 배경색 (구분을 위해) */
+.page-gallery { background-color: #f7f7f7; }
+.page-info { background-color: #ffffff; }
+.page-map { background-color: #f7f7f7; }
+.page-footer-area { background-color: #ffffff; }
+
+
+/* --- 섹션 1: 갤러리 --- */
+.page-gallery {
+    padding: 2rem 5%; 
+}
+.page-gallery h2 {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+.detail-gallery-fullscreen {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+.detail-gallery-fullscreen .main-image-container img {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.detail-gallery-fullscreen .thumbnail-list {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.detail-gallery-fullscreen .thumbnail-list .thumbnail {
+    width: 100px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+.thumbnail-list .thumbnail:hover,
+.thumbnail-list .thumbnail.active {
+    border-color: #007bff;
+}
+
+
+/* --- 섹션 2: 정보 --- */
+.page-info {
+    justify-content: flex-start;
+    overflow-y: auto;
+    padding: 5rem 5% 2rem 5%;
+}
+.info-content-wrapper {
+    width: 100%;
+}
+.page-info h3 {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem 0;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+.info-table ul {
+    list-style: none;
+    border-top: 2px solid #f0f0f0;
+}
+.info-table li {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 1rem 0;
+    font-size: 1rem;
+}
+.info-table .icon { flex-basis: 40px; }
+.info-table .title { flex-basis: 120px; font-weight: 600; }
+.info-table .data { flex: 1; }
+.info-table .btn-copy {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background: #f7f7f7;
+    cursor: pointer;
+}
+.detail-text p {
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+/* --- 섹션 3: 지도 --- */
+.page-map {
+    padding: 2rem 5%;
+}
+.page-map h3 {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+.map-frame-wrapper {
+    width: 100%;
+    height: 80%;
+    border: 1px solid #ddd;
+}
+.map-frame-wrapper iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* --- 섹션 4: 푸터 영역 (스냅 스크롤 제거) --- */
+.page-footer-area {
+    height: auto; 
+    padding: 0;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.footer-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* 💡 HTML에서 삭제된 .btn-back-to-list 스타일 제거 */
+
+.page-footer-area footer {
+    width: 100%;
+    margin-top: 5rem;
+}
+
+/* --- 반응형 웹 디자인 (수정 없음) --- */
+@media (max-width: 992px) {
+    /* ... (이하 동일) ... */
+}
