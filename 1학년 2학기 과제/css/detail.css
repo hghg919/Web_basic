@@ -390,3 +390,56 @@ html {
 }
 
 /* ⚠️ 헤더(.top-header), 메뉴, 로고 스타일은 common.css에서 통합 관리하므로 삭제됨 */
+
+/* ========================================= */
+/* 📏 [4단계 반응형] Detail (상세정보) */
+/* ========================================= */
+
+/* 1. 스마트폰 (767px 이하) - 갤러리 세로 배치, 스냅 해제 */
+@media screen and (max-width: 767px) {
+    html { scroll-snap-type: none; } /* 스냅 불편하면 해제 */
+    .snap-page { height: auto; min-height: 100vh; padding: 80px 20px 40px 20px; }
+    
+    /* 갤러리: 이미지 위, 썸네일 아래(가로스크롤) */
+    .detail-gallery-fullscreen { flex-direction: column; height: auto; border: none; background: transparent;}
+    .detail-gallery-fullscreen .main-image-container { width: 100%; height: 250px; }
+    .detail-gallery-fullscreen .thumbnail-list { 
+        width: 100%; height: auto; flex-direction: row; overflow-x: auto; gap: 10px; padding: 5px 0;
+    }
+    .detail-gallery-fullscreen .thumbnail-list .thumbnail { width: 70px; height: 50px; flex-shrink: 0; }
+    
+    /* 사이드바 숨김 */
+    .side-nav { display: none !important; }
+    .info-table li { flex-wrap: wrap; }
+    .info-table .title { width: 100%; margin-bottom: 5px; }
+    .info-table .data { padding-left: 0; margin-left: 40px; }
+}
+
+/* 2. 태블릿 (768px ~ 1023px) - 갤러리 비율 조정 */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .snap-page { padding: 80px 30px; }
+    
+    /* 갤러리: 가로 배치 유지하되 비율 변경 (6:4) */
+    .detail-gallery-fullscreen { width: 100%; height: 50vh; }
+    .detail-gallery-fullscreen .main-image-container { width: 60%; }
+    .detail-gallery-fullscreen .thumbnail-list { width: 38%; }
+    
+    .side-nav { display: none; } /* 태블릿까지는 사이드바 숨김 */
+}
+
+/* 3. 노트북 (1024px ~ 1439px) - 기본 비율 (7:3) */
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+    .detail-gallery-fullscreen { height: 60vh; }
+    .side-nav { display: flex; } /* 사이드바 보이기 시작 */
+}
+
+/* 4. 데스크탑 (1440px 이상) - 넓은 화면 활용 */
+@media screen and (min-width: 1440px) {
+    .snap-page { padding-left: 15%; padding-right: 15%; } /* 양쪽 여백을 많이 줌 */
+    .detail-gallery-fullscreen { height: 70vh; } /* 갤러리 더 높게 */
+    
+    /* 폰트 키움 */
+    .page-gallery h2 { font-size: 4rem; }
+    .info-table li { font-size: 1.2rem; padding: 1.5rem 0; }
+    .detail-text p { font-size: 1.2rem; line-height: 2; }
+}
