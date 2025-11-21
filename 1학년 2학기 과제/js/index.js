@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 사용할 배경 이미지 배열
     const images = [
-        'images/김해.jpg',
+        'images/김해.png',
         'images/창원.png',
-        'images/통영.jpg',
+        'images/통영.png',
         'images/거제.png'
     ];
 

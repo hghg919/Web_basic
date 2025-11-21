@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>경남 4색 여행 - 진주성</title>
+    <title>경남 4색 여행</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,36 +13,102 @@
     <link rel="stylesheet" href="css/detail.css">
 </head>
 <body>
-    <header>
-        <h1><a href="index.html">경남 4색 여행</a></h1>
-        <nav>
-            <ul>
-                <li><a href="main.html#changwon">창원</a></li>
-                <li><a href="main.html#geoje">거제</a></li>
-                <li><a href="main.html#tongyeong">통영</a></li>
-                <li><a href="main.html#gimhae">김해</a></li>
-            </ul>
+<header class="top-header">
+    <div class="header-inner">
+        <a href="main.html" class="header-logo-wrapper">
+            <img src="images/logo.png" alt="로고">
+            <span>경남 <span class="four-colors">4</span>색 여행</span>
+        </a>
+
+        <nav class="main-menu">
+            <div class="main-dropdown menu-changwon">
+                <div>창원</div>
+                <div class="main-dropdown-menu">
+                    <a>가로수길</a> 
+                    <a href="detail.html?id=changwon">마산로봇랜드 테마파크</a>
+                </div>
+            </div>
+
+            <div class="main-dropdown menu-geoje">
+                <div>거제</div>
+                <div class="main-dropdown-menu">
+                    <a href="detail.html?id=geoje">파노라마 케이블카&윤슬전망대</a>
+                    <a>해금강</a>
+                </div>
+            </div>
+
+            <div class="main-dropdown menu-tongyeong">
+                <div>통영</div>
+                <div class="main-dropdown-menu">
+                    <a href="detail.html?id=tongyeong">잊음 한옥게스트하우스(하동집)</a>
+                    <a>해저터널</a>
+                </div>
+            </div>
+
+            <div class="main-dropdown menu-gimhae">
+                <div>김해</div>
+                <div class="main-dropdown-menu">
+                    <a>고분군</a>
+                    <a href="detail.html?id=gimhae">낙동강레일파크</a>
+                </div>
+            </div>
         </nav>
-    </header>
+
+        <div class="lang-dropdown-wrapper">
+            <button class="lang-dropbtn" onclick="toggleLangDropdown()">
+                🌐 Language ▾
+            </button>
+            <div id="langDropdown" class="lang-dropdown-content">
+                <a href="#">EN</a>
+                <a href="#">CH</a>
+                <a href="#">JP</a>
+                <a href="#">VN</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<nav class="side-nav">
+    <div class="nav-title">바로가기</div>
+    <div class="nav-divider"></div>
+    
+    <a href="#sec-gallery" class="active">
+        <span class="nav-icon">🖼️</span>
+        <span class="nav-text">갤러리</span>
+    </a>
+    
+    <div class="nav-divider"></div>
+
+    <a href="#sec-info">
+        <span class="nav-icon">📝</span>
+        <span class="nav-text">정보</span>
+    </a>
+    
+    <div class="nav-divider"></div>
+
+    <a href="#sec-map">
+        <span class="nav-icon">🗺️</span>
+        <span class="nav-text">지도</span>
+    </a>
+</nav>
 
     <main class="snap-container">
 
-        <section class="snap-page page-gallery">
-            <h2>진주 진주성</h2>
+        <section class="snap-page page-gallery" id="sec-gallery">
+            <h2 id="detail-name-area">
+                <span id="detail-name">...</span>
+                <span id="btn-like" class="btn-like">♡</span>
+            </h2>
             <div class="detail-gallery-fullscreen">
                 <div class="main-image-container">
-                    <img src="images/tongyeong-main.jpg" alt="진주성 메인" id="mainImage">
+                    <img src="" alt="메인 이미지" id="mainImage" style="cursor: zoom-in;">
                 </div>
-                <div class="thumbnail-list">
-                    <img src="images/tongyeong-thumb-1.jpg" alt="진주성 썸네일 1" class="thumbnail active">
-                    <img src="images/tongyeong-thumb-2.jpg" alt="진주성 썸네일 2" class="thumbnail">
-                    <img src="images/tongyeong-thumb-3.jpg" alt="진주성 썸네일 3" class="thumbnail">
-                    <img src="images/tongyeong-thumb-4.jpg" alt="진주성 썸네일 4" class="thumbnail">
+                <div class="thumbnail-list" id="thumbnail-list">
                 </div>
             </div>
         </section>
 
-        <section class="snap-page page-info">
+        <section class="snap-page page-info" id="sec-info">
             <div class="info-content-wrapper">
                 <h3>기본정보</h3>
                 <div class="info-table">
@@ -50,54 +116,87 @@
                         <li>
                             <span class="icon">📍</span>
                             <span class="title">주소</span>
-                            <span class="data">경상남도 진주시 남강로 626 <button class="btn-copy">길찾기</button></span>
+                            <span class="data">
+                                <span id="info-address">...</span>
+                                <a href="#" target="_blank" class="btn-map" id="btn-map">길찾기</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="icon">♿</span>
+                            <span class="title">관리기관</span>
+                            <span class="data" id="info-facility">...</span>
                         </li>
                         <li>
                             <span class="icon">📞</span>
                             <span class="title">문의전화</span>
-                            <span class="data">055-749-5171</span>
-                        </li>
-                        <li>
-                            <span class="icon">♿</span>
-                            <span class="title">편의시설</span>
-                            <span class="data">장애인 화장실, 휠체어 대여, 점자블록 등</span>
+                            <span class="data" id="info-phone">...</span>
                         </li>
                         <li>
                             <span class="icon">💻</span>
                             <span class="title">홈페이지</span>
                             <span class="data">
-                                <a href="http://www.jinju.go.kr" target="_blank" class="btn-homepage">홈페이지 바로가기</a>
+                                <a href="#" target="_blank" class="btn-homepage" id="info-homepage">홈페이지 바로가기</a>
                             </span>
                         </li>
                     </ul>
                 </div>
 
                 <h3>상세내용</h3>
-                <div class="detail-text">
-                    <p>* 지정번호 : 사적 제118호 (1963.1.21)</p>
-                    <p>* 지정일자 : 1963년 1월 21일</p>
-                    <p>진주성은 임진왜란 3대 대첩의 하나인 진주대첩이 있었던 곳으로, 왜군을 막기 위한 주요 거점이었습니다. 성 안에는 김시민 장군의 전공을 기리는 촉석루와 의기 논개가 적장을 껴안고 남강에 투신한 의암바위가 있어 그 역사적 의미가 깊습니다.</p>
+                <div class="detail-text" id="detail-text-content">
                 </div>
             </div>
         </section>
 
-        <section class="snap-page page-map">
+        <section class="snap-page page-map" id="sec-map">
             <h3>지도</h3>
             <div class="map-frame-wrapper">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3269.587884177708!2d128.07727407632607!3d35.19163277281861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356eac7c617b0001%3A0xb33c09b81b8ac51e!2z7KeB7KO17ISg!5e0!3m2!1sko!2skr!4v1699927510203!5m2!1sko!2skr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" id="map-iframe"></iframe>
             </div>
         </section>
 
         <section class="snap-page page-footer-area">
             <div class="footer-content-wrapper">
-                <footer>
-                    <p>© 2025 경남 4색 여행. (정현준, 최효준)</p>
+                <footer class="footer">
+                    <div class="footer-inner">
+                        
+                        <ul class="footer-menu">
+                            <li><a href="#">저작권 정책</a></li>
+                            <li><a href="#">개인정보처리방침</a></li>
+                            <li><a href="#">홈페이지 이용안내</a></li>
+                            <li><a href="#">이용약관</a></li>
+                            <li><a href="#">사이트맵</a></li>
+                        </ul>
+            
+                        <div class="copyright">
+                            <p>&copy; 2025 경남 4색 여행 (정현준, 최효준)</p>
+                            <p style="font-size: 0.8rem; color: #999; margin-top: 5px;">
+                                ※ 본 사이트의 콘텐츠는 '경남관광길잡이'의 자료를 활용하여 제작되었습니다.
+                            </p>
+                        </div>
+
+                        <ul class="sns-icons">
+                            <li><a href="#"><img src="images/sns-1.png" alt="Facebook"></a></li>
+                            <li><a href="#"><img src="images/sns-2.png" alt="YouTube"></a></li>
+                            <li><a href="#"><img src="images/sns-3.png" alt="Instagram"></a></li>
+                        </ul>
+
+                    </div>     
                 </footer>
             </div>
         </section>
 
     </main>
+
+    <button id="btn-top" title="맨 위로">⬆</button>
+
+    <div id="lightbox-modal" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="caption"></div>
+    </div>
     
+    <script src="js/data.js"></script>
     <script src="js/detail.js"></script>
+    <script src="js/common.js"></script>
 </body>
 </html>

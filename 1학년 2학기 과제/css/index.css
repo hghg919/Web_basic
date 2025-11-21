@@ -9,68 +9,66 @@ body {
 
 /* 배경 이미지 슬라이더 컨테이너 */
 .background-slider {
-    position: fixed; /* 뷰포트에 고정 */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: cover; /* 이미지가 배경을 꽉 채우도록 */
-    background-position: center; /* 이미지를 중앙에 정렬 */
-    transition: background-image 1s ease-in-out; /* 배경 이미지 전환 효과 */
-    z-index: -1; /* 다른 콘텐츠 뒤로 보냄 */
+    background-size: cover;
+    background-position: center;
+    transition: background-image 1s ease-in-out;
+    z-index: -1;
 }
 
-/* 메인 콘텐츠 (제목, 버튼) 컨테이너 역할 */
+/* 메인 콘텐츠 컨테이너 */
 .main-content {
     width: 100%;
     height: 100%;
-    position: relative; /* 자식 요소의 absolute 위치 기준 */
+    position: relative;
 }
 
-/* h1 (제목) 스타일 수정 */
+/* h1 (제목) 공통 스타일 */
 .main-content h1 {
-    position: absolute; /* 컨테이너를 기준으로 절대 위치 */
-    top: 25%; /* 화면 상단에서 25% 지점 */
+    font-family: 'Stylish', serif;
+    position: absolute;
     left: 50%;
-    transform: translate(-50%, -50%); /* X, Y축 모두 중앙 정렬 */
-    
-    color: white; /* 글자색 흰색 */
-    font-size: 5rem; /* 글자 크기 키움 */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* 배경 위에 글자가 잘 보이도록 그림자 효과 추가 */
-
+    transform: translate(-50%, -50%);
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
     background-color: transparent;
     padding: 0;
-    border-radius: 0;
-    margin-bottom: 0;
+    margin: 0;
     letter-spacing: 2px;
+    /* white-space: nowrap;  제목이 줄바꿈되지 않게 하려면 주석 해제 */
+    width: 100%; /* 화면 중앙 정렬을 위해 너비 추가 */
+    text-align: center; /* 텍스트 중앙 정렬 */
 }
 
-/* start-button (버튼) 스타일 */
+/* 버튼 공통 스타일 */
 .start-button {
-    position: absolute; 
-    top: 50%;
+    font-family: 'Noto Sans KR', sans-serif;
+    position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
     overflow: hidden;
     display: inline-block;
     color: white;
-    font-size: 1.2rem;
     text-decoration: none;
     background-color: transparent;
     border: 2px solid white;
     border-radius: 5px;
-    padding: 15px 40px;
     transition: color 0.4s ease;
+    white-space: nowrap; /* 버튼 글자 줄바꿈 방지 */
 }
 
-/* 마우스를 올렸을 때 채워질 배경(게이지) 스타일 */
+/* 버튼 호버 효과 */
 .start-button::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 0; /* 처음에는 너비가 0 */
+    width: 0;
     height: 100%;
     background-color: white;
     z-index: -1;
@@ -85,13 +83,58 @@ body {
     width: 100%;
 }
 
-/* index.html의 제목/버튼 반응형 (글자 크기 조절) */
-@media (max-width: 768px) {
+/* ========================================= */
+/* 📱 반응형 4단계 설정 (핵심) */
+/* ========================================= */
+
+/* 1. 스마트폰 (767px 이하) - 요소들을 작게, 위로 배치 */
+@media screen and (max-width: 767px) {
     .main-content h1 {
-        font-size: 3.5rem;
+        font-size: 3rem;      /* 폰트 크기 대폭 축소 */
+        top: 35%;             /* 화면 좀 더 위쪽으로 배치 */
     }
     .start-button {
         font-size: 1rem;
+        padding: 10px 25px;   /* 버튼 패딩 줄임 */
+        top: 55%;             /* 제목과 간격 조정 */
+    }
+}
+
+/* 2. 태블릿 (768px ~ 1023px) - 중간 크기 */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .main-content h1 {
+        font-size: 4rem;      /* 폰트 적당히 키움 */
+        top: 30%;
+    }
+    .start-button {
+        font-size: 1.1rem;
         padding: 12px 30px;
+        top: 50%;
+    }
+}
+
+/* 3. 노트북 (1024px ~ 1439px) - 기본 PC 사이즈 */
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+    .main-content h1 {
+        font-size: 5rem;      /* 원본 크기 유지 */
+        top: 25%;
+    }
+    .start-button {
+        font-size: 1.2rem;
+        padding: 15px 40px;
+        top: 50%;
+    }
+}
+
+/* 4. 데스크탑 (1440px 이상) - 대화면에서 시원하게 */
+@media screen and (min-width: 1440px) {
+    .main-content h1 {
+        font-size: 6rem;      /* 초대형 화면에선 폰트 더 크게 */
+        top: 25%;
+    }
+    .start-button {
+        font-size: 1.4rem;    /* 버튼도 시원하게 */
+        padding: 20px 50px;
+        top: 50%;
     }
 }

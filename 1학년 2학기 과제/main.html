@@ -1,37 +1,178 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>경남 4색 여행 - 메인</title>
-    
+<meta charset="UTF-8">
+<title>경남 4색 여행</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR:wght@400;700&family=Yeon+Sung&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/common.css">
-    </head>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+
 <body>
-    <header>
-        <h1><a href="index.html">경남 4색 여행</a></h1>
-        <nav>
-            <ul>
-                <li><a href="main.html#changwon">창원</a></li>
-                <li><a href="main.html#geoje">거제</a></li>
-                <li><a href="main.html#tongyeong">통영</a></li>
-                <li><a href="main.html#gimhae">김해</a></li>
-            </ul>
+
+<!-- ---------------------- 메뉴바 ---------------------- -->
+<header class="top-header">
+    <div class="header-inner">
+        <a href="index.html" class="header-logo-wrapper">
+            <img src="images/logo.png" alt="로고">
+            <span>경남 <span class="four-colors">4</span>색 여행</span>
+        </a>
+
+        <nav class="main-menu">
+            <div class="main-dropdown menu-changwon">
+                <div>창원</div>
+                <div class="main-dropdown-menu">
+                    <a>가로수길</a> 
+                    <a href="detail.html?id=changwon">마산로봇랜드 테마파크</a>
+                </div>
+            </div>
+
+            <div class="main-dropdown menu-geoje">
+                <div>거제</div>
+                <div class="main-dropdown-menu">
+                    <a href="detail.html?id=geoje">파노라마 케이블카&윤슬전망대</a>
+                    <a>해금강</a>
+                </div>
+            </div>
+
+            <div class="main-dropdown menu-tongyeong">
+                <div>통영</div>
+                <div class="main-dropdown-menu">
+                    <a href="detail.html?id=tongyeong">잊음 한옥게스트하우스(하동집)</a>
+                    <a>해저터널</a>
+                </div>
+            </div>
+
+            <div class="main-dropdown menu-gimhae">
+                <div>김해</div>
+                <div class="main-dropdown-menu">
+                    <a>고분군</a>
+                    <a href="detail.html?id=gimhae">낙동강레일파크</a>
+                </div>
+            </div>
+
         </nav>
-    </header>
 
-    <main style="padding: 2rem; min-height: 60vh;">
-        <h2>도시 목록</h2>
-        <p>여기에 4개 도시 카드 목록을 채워주세요.</p>
-    </main>
+        <div class="lang-dropdown-wrapper">
+            <button class="lang-dropbtn" onclick="toggleLangDropdown()">
+                🌐 Language ▾
+            </button>
+            <div id="langDropdown" class="lang-dropdown-content">
+                <a href="#">EN</a>
+                <a href="#">CH</a>
+                <a href="#">JP</a>
+                <a href="#">VN</a>
+            </div>
+        </div>
+    </div>
+</header>
 
-    <footer>
-        <p>&copy; 2025 경남 4색 여행. (정현준, 최효준)</p>
-    </footer>
+<!-- ---------------------- 슬라이드 ---------------------- -->
+<div class="slider" id="slider">
 
-    </body>
+    <div class="slide active">
+        <a>
+            <img src="images/김해 대성동고분군.png">
+        </a>
+        <div class="caption">김해 대성동 고분군</div>
+    </div>
+
+    <div class="slide">
+        <a href="detail.html?id=gimhae">
+            <img src="images/김해.png">
+        </a>
+        <div class="caption">김해 낙동강레일파크</div>
+    </div>
+
+    <div class="slide">
+        <a href="detail.html?id=tongyeong">
+            <img src="images/통영.png">
+        </a>
+        <div class="caption">통영 잊음 한옥게스트하우스(하동집)</div>
+    </div>
+
+    <div class="slide">
+        <a>
+            <img src="images/통영 해저터널.png">
+        </a>
+        <div class="caption">통영 해저터널</div>
+    </div>
+
+    <div class="slide">
+        <a>
+            <img src="images/창원 가로수 1.png">
+        </a>
+        <div class="caption">창원 가로수길</div>
+    </div>
+
+    <div class="slide">
+        <a href="detail.html?id=changwon">
+            <img src="images/창원.png">
+        </a>
+        <div class="caption">창원 마산로봇랜드 테마파크</div>
+    </div>
+
+    <div class="slide">
+        <a href="detail.html?id=geoje">
+            <img src="images/거제.png">
+        </a>
+        <div class="caption">거제 파노라마 케이블카&윤슬전망대</div>
+    </div>
+
+    <div class="slide">
+        <a>
+            <img src="images/거제 해금감1.png">
+        </a>
+        <div class="caption">거제 해금강</div>
+    </div>
+
+</div>
+
+<!-- 컨트롤 -->
+<div class="controls">
+    <button class="circle-btn" id="prev">&#10094;</button>
+    <button class="circle-btn" id="pauseBtn">⏸</button>
+    <button class="circle-btn" id="next">&#10095;</button>
+</div>
+
+<!-- 점 네비 -->
+<div class="dot-area" id="dotArea"></div>
+
+<!-- ---------------------- 푸터 ---------------------- -->
+<footer class="footer">
+    <div class="footer-inner">
+        
+        <ul class="footer-menu">
+            <li><a href="#">저작권 정책</a></li>
+            <li><a href="#">개인정보처리방침</a></li>
+            <li><a href="#">홈페이지 이용안내</a></li>
+            <li><a href="#">이용약관</a></li>
+            <li><a href="#">사이트맵</a></li>
+        </ul>
+
+        <div class="copyright">
+            <p>&copy; 2025 경남 4색 여행 (정현준, 최효준)</p>
+            <p style="font-size: 0.8rem; color: #999; margin-top: 5px;">
+                ※ 본 사이트의 콘텐츠는 '경남관광길잡이'의 자료를 활용하여 제작되었습니다.
+            </p>
+        </div>
+
+        <ul class="sns-icons">
+            <li><a href="#"><img src="images/sns-1.png" alt="Facebook"></a></li>
+            <li><a href="#"><img src="images/sns-2.png" alt="YouTube"></a></li>
+            <li><a href="#"><img src="images/sns-3.png" alt="Instagram"></a></li>
+        </ul>
+
+    </div>    
+</footer>
+
+<script src="./js/main.js"></script>
+<script src="./js/common.js"></script>
+
+</body>
 </html>

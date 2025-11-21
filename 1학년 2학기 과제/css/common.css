@@ -1,5 +1,5 @@
 /* ========================================= */
-/* --- 1. Common (공통 스타일) --- */
+/* --- 1. Common (공통 스타일 통합) --- */
 /* ========================================= */
 
 /* 기본 스타일 초기화 */
@@ -9,16 +9,14 @@
     box-sizing: border-box;
 }
 
-/* 💡 html, body 100%는 풀스크린 레이웃을 위해 공통으로 사용 */
 html, body {
     width: 100%;
     height: 100%;
 }
 
 body {
-    /* 💡 3. 본문 텍스트: Noto Sans KR (가독성) */
+    /* 기본 폰트 설정 */
     font-family: 'Noto Sans KR', sans-serif;
-    /* 💡 <body>에서 중복된 width, height 제거 */
 }
 
 a {
@@ -30,36 +28,339 @@ ul {
     list-style: none;
 }
 
-header {
-    /* 💡 'position: fixed'로 변경하여 화면 상단에 고정 */
+/* ========================================= */
+/* --- [통합] 헤더 (Header) --- */
+/* ========================================= */
+
+.top-header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* 💡 너비를 100%로 설정 */
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    border-bottom: 1px solid #ddd;
+    width: 100%;
+    height: 85px;
+    
+    /* 💡 기본 배경: Detail 페이지 기준 (흰색) */
     background-color: white; 
-    z-index: 10;
-}
-
-header h1 {
-    /* 💡 1. 헤더: Yeon Sung (감성) */
-    font-family: 'Yeon Sung', cursive;
-    font-size: 1.8rem; /* 폰트 크기 살짝 조정 */
-}
-
-header nav ul {
+    border-bottom: 1px solid #ddd;
+    
+    z-index: 3000;
     display: flex;
-    gap: 1.5rem; /* 메뉴 아이템 간격 */
+    justify-content: center; /* 내부 내용 중앙 정렬 */
 }
 
-footer {
-    text-align: center;
-    padding: 1.5rem;
-    background-color: #f2f2f2;
-    margin-top: 2rem;
+/* ========================================= */
+/* --- 1. [헤더 레이아웃] 양쪽 넓히기 --- */
+/* ========================================= */
+
+.header-inner {
+    /* 💡 1200px 제한을 없애고 화면을 꽉 채우게(100%) 변경 */
+    width: 100%;
+    max-width: 100%; 
+    
+    height: 100%;
+    display: flex;
+    align-items: center;
+    
+    /* 💡 양쪽 끝 여백 조절 (이 숫자를 줄이면 더 끝으로 붙습니다) */
+    padding: 0 30px; 
 }
+
+/* --- 로고 스타일 --- */
+.header-logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.header-logo-wrapper img {
+    height: 40px;
+    width: auto;
+}
+
+.header-logo-wrapper span {
+    font-family: 'Yeon Sung', cursive;
+    font-size: 1.8rem;
+    padding-top: 4px; 
+}
+
+/* 숫자 4 애니메이션 */
+.four-colors {
+    animation: changeFourColors 6s infinite;
+    display: inline-block;
+}
+
+@keyframes changeFourColors {
+    0%, 100% { color: #b0e0e6; } /* 거제 */
+    25% { color: #a0e6b4; }      /* 창원 */
+    50% { color: #D2B48C; }      /* 김해 */
+    75% { color: #f08080; }      /* 통영 */
+}
+
+/* ========================================= */
+/* --- 2. [메뉴 위치] 오른쪽으로 보내기 --- */
+/* ========================================= */
+
+.main-menu {
+    display: flex;
+    gap: 40px; /* 메뉴 글자들끼리의 간격 */
+    
+    /* 💡 [핵심 마법] 왼쪽 여백을 '자동(auto)'으로 채우면 메뉴가 오른쪽 끝으로 밀려납니다 */
+    margin-left: auto; 
+    
+    /* 💡 메뉴와 언어 버튼 사이의 간격 */
+    margin-right: 50px; 
+}
+
+.main-menu > div { /* 드롭다운 상위 메뉴 */
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 15px 0;
+    cursor: pointer;
+    position: relative;
+    font-family: Arial, sans-serif; 
+}
+
+/* 메뉴 밑줄 애니메이션 */
+.main-menu > div::after {
+    content: "";
+    width: 0%;
+    height: 3px;
+    background: #ffd45e;
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    transition: 0.3s;
+}
+
+.main-menu > div:hover::after {
+    width: 100%;
+}
+
+/* --- 드롭다운 메뉴 스타일 --- */
+.main-dropdown {
+    position: relative;
+}
+.main-dropdown:hover .main-dropdown-menu {
+    display: flex;
+}
+
+.main-dropdown-menu {
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    border: 1px solid #eee;
+    min-width: 160px;
+    z-index: 9999;
+}
+
+.main-dropdown-menu a {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    white-space: nowrap;
+    text-align: center;
+    display: block;
+    padding: 5px 0;
+    transition: color 0.2s;
+}
+
+.main-dropdown-menu a:hover {
+    color: #007bff;
+}
+
+/* --- 언어 선택 드롭다운 --- */
+.lang-dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.lang-dropbtn {
+    background-color: transparent;
+    color: #333;
+    font-size: 0.95rem;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.lang-dropbtn:hover {
+    background-color: #f2f2f2;
+}
+
+.lang-dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 45px;
+    background-color: #fff;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15);
+    border-radius: 10px;
+    border: 1px solid #eee;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.lang-dropdown-content a {
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.lang-dropdown-content a:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+}
+
+.show-lang {
+    display: block;
+}
+
+/* ========================================= */
+/* --- [통합] 푸터 (Footer) --- */
+/* ========================================= */
+
+.footer {
+    width: 100%;
+    background-color: #f2f2f2; /* 회색 배경 */
+    padding: 3rem 0;           /* 위아래 여백 */
+    font-size: 0.9rem;
+    color: #555;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* ========================================= */
+/* --- [푸터 레이아웃] 헤더와 동일하게 좌측 정렬 --- */
+/* ========================================= */
+
+.footer-inner {
+    /* 💡 1200px 제한을 없애고 화면 전체 사용 */
+    width: 100%;
+    max-width: 100%; 
+    
+    /* 중앙 정렬(margin: 0 auto) 제거 */
+    margin: 0; 
+    
+    /* 💡 헤더(.header-inner)와 똑같은 여백(30px) 적용 */
+    padding: 0 30px; 
+    
+    /* 세로로 쌓고 왼쪽 정렬 (기존 유지) */
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 1.5rem; 
+}
+
+/* 1. 메뉴 링크 */
+.footer-menu {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin-left: -15px;
+}
+
+.footer-menu li {
+    display: flex;
+    align-items: center;
+}
+
+.footer-menu li a {
+    color: #555;
+    text-decoration: none;
+    padding: 0 15px;
+    font-weight: 500;
+}
+
+.footer-menu li::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 12px;
+    background-color: #bbb;
+}
+
+.footer-menu li:last-child::after {
+    display: none;
+}
+
+/* 2. 저작권 텍스트 */
+.copyright p {
+    color: #888;
+    margin: 0;
+    text-align: left;
+    line-height: 1.4;
+}
+
+/* 3. SNS 아이콘 */
+.sns-icons {
+    display: flex; 
+    gap: 15px; 
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sns-icons img {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.sns-icons img:hover {
+    opacity: 1;
+}
+
+/* ========================================= */
+/* --- [추가] 메뉴 호버 시 지역별 고유색 적용 --- */
+/* ========================================= */
+
+/* 1. 창원: #a0e6b4 (연두) */
+.menu-changwon:hover > div {
+    color: #a0e6b4 !important; /* 기존 검정색 덮어쓰기 */
+}
+/* 밑줄 색깔도 같이 바꾸고 싶다면 아래 코드 주석 해제 */
+/* .menu-changwon:hover > div::after { background: #a0e6b4; } */
+
+
+/* 2. 거제: #b0e0e6 (하늘) */
+.menu-geoje:hover > div {
+    color: #b0e0e6 !important;
+}
+/* .menu-geoje:hover > div::after { background: #b0e0e6; } */
+
+
+/* 3. 통영: #f08080 (분홍) */
+.menu-tongyeong:hover > div {
+    color: #f08080 !important;
+}
+/* .menu-tongyeong:hover > div::after { background: #f08080; } */
+
+
+/* 4. 김해: #D2B48C (황토) */
+.menu-gimhae:hover > div {
+    color: #D2B48C !important;
+}
+/* .menu-gimhae:hover > div::after { background: #D2B48C; } */
