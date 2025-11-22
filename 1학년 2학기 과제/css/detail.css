@@ -2,7 +2,7 @@
 /* --- 3. detail.css (최종 정리 버전) --- */
 /* ========================================= */
 
-/* 💡 스크롤 스냅 기능 */
+/* 스크롤 스냅 기능 */
 html {
     scroll-snap-type: y mandatory;
     scroll-padding-top: 4rem; 
@@ -208,7 +208,7 @@ html {
 }
 
 /* --- 섹션 4: 푸터 영역 수정 (레이아웃 전용) --- */
-/* 💡 푸터의 스타일은 common.css가 담당하고, 여기서는 위치만 잡습니다 */
+/* 푸터의 스타일은 common.css가 담당하고, 여기서는 위치만 잡습니다 */
 .page-footer-area {
     height: auto !important;
     min-height: auto !important;
@@ -227,7 +227,7 @@ html {
 
 
 /* ========================================= */
-/* --- 💡 추가 기능 스타일 (Detail 고유 기능) --- */
+/* --- 추가 기능 스타일 (Detail 고유 기능) --- */
 /* ========================================= */
 
 /* 1. 맨 위로 가기 버튼 */
@@ -280,7 +280,7 @@ html {
     align-items: center;
 }
 
-/* 📦 이미지와 버튼을 감싸는 박스 */
+/* 이미지와 버튼을 감싸는 박스 */
 .lightbox-wrapper {
     position: relative; /* 닫기 버튼의 기준점 */
     display: inline-block; /* 내용물 크기만큼만 잡힘 */
@@ -420,22 +420,13 @@ html {
     .side-nav { display: none; }
 }
 
-/* ⚠️ 헤더(.top-header), 메뉴, 로고 스타일은 common.css에서 통합 관리하므로 삭제됨 */
-
-/* ========================================= */
-/* 📱 [반응형 & 레이아웃 보정] Detail 최종 통합본 */
-/* 1. 폰/태블릿: 수직 중앙 정렬 (추가됨) */
-/* 2. 노트북: 위아래 여백 확보 (유지됨) */
-/* 3. 데스크탑: 1400px 중앙 정렬 (유지됨) */
-/* ========================================= */
-
 /* ========================================= */
 /* 1. 스마트폰 (767px 이하) - 최종 수정 */
 /* ========================================= */
 @media screen and (max-width: 767px) {
     html { scroll-snap-type: none; }
     
-    /* 🔥 [수정] 중앙 정렬 제거 -> 위에서부터 시작 (flex-start) */
+    /* [수정] 중앙 정렬 제거 -> 위에서부터 시작 (flex-start) */
     .snap-page { 
         height: auto; 
         min-height: 100vh; 
@@ -443,7 +434,7 @@ html {
         
         display: flex;
         flex-direction: column;
-        justify-content: flex-start; /* 👈 다시 위로 붙임 */
+        justify-content: flex-start; /* 다시 위로 붙임 */
         align-items: center;         /* 가로만 중앙 정렬 */
     }
 
@@ -482,7 +473,7 @@ html {
         border-radius: 10px;
     }
     
-    /* 🔥 [썸네일] 가로 스크롤 복구 */
+    /* [썸네일] 가로 스크롤 복구 */
     .detail-gallery-fullscreen .thumbnail-list { 
         width: 100%; 
         height: auto; 
@@ -517,7 +508,7 @@ html {
 @media screen and (min-width: 768px) and (max-width: 1023px) {
     .snap-page { padding: 85px 40px 60px 40px; }
     
-    /* 🔥 [추가됨] 태블릿도 중앙 정렬 */
+    /* [추가됨] 태블릿도 중앙 정렬 */
     .snap-page.page-gallery,
     .snap-page.page-map {
         display: flex;
@@ -532,7 +523,7 @@ html {
 }
 
 /* ----------------------------------------- */
-/* 3. 🔥 노트북 (1024px ~ 1440px) - 여백 확보 유지 */
+/* 3. 노트북 (1024px ~ 1440px) - 여백 확보 유지 */
 /* ----------------------------------------- */
 @media screen and (min-width: 1024px) and (max-width: 1440px) {
     .snap-page {
@@ -577,7 +568,7 @@ html {
 
 
 /* ----------------------------------------- */
-/* 4. 💻 데스크탑 (1441px 이상) - 1400px 고정 유지 */
+/* 4. 데스크탑 (1441px 이상) - 1400px 고정 유지 */
 /* ----------------------------------------- */
 @media screen and (min-width: 1441px) {
 
@@ -627,7 +618,7 @@ html {
 }
 
 /* ========================================= */
-/* 🛡️ [안전장치] 기준 높이 600px 유지 */
+/* [안전장치] 기준 높이 600px 유지 */
 /* ========================================= */
 @media screen and (max-height: 600px) {
     
@@ -657,7 +648,7 @@ html {
 }
 
 /* ========================================= */
-/* 🔧 [푸터 수정] 납작하게 유지 */
+/*  [푸터 수정] 납작하게 유지 */
 /* ========================================= */
 .snap-page.page-footer-area {
     height: auto !important;

@@ -55,7 +55,7 @@ const touristData = {
         "mapSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3253.346967702608!2d128.81831177544316!3d35.37184954690771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3568ba7607500647%3A0x9b3c4dc064a40344!2z6rmA7ZW0IOuCmeuPmeqwlSDroIjsnbztjIztgaw!5e0!3m2!1sko!2skr!4v1763620949228!5m2!1sko!2skr"
     },
 
-    // 3. 창원 데이터 (나중에 채워주세요)
+    // 3. 창원 데이터
     "changwon": {
         "name": "창원 마산로봇랜드 테마파크",
         "subtitle": "레저문화와 첨단 로봇기술의 복합 문화 공간",
@@ -78,7 +78,7 @@ const touristData = {
         "mapSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3265.184347808077!2d128.58212488260168!3d35.077126392776165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356f2be4b093188d%3A0x5d1562a4550dd4a8!2z66eI7IKw66Gc67SH656c65Oc!5e0!3m2!1sko!2skr!4v1763621395299!5m2!1sko!2skr"
     },
 
-    // 4. 거제 데이터 (나중에 채워주세요)
+    // 4. 거제 데이터
     "geoje": {
         "name": "거제 파노라마 케이블카&윤슬전망대",
         "subtitle": "4계절 색다른 노자산의 풍경",
