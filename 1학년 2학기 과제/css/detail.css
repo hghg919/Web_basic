@@ -570,22 +570,23 @@ html {
 }
 
 /* ========================================= */
-/* 🛡️ [안전장치] 세로가 짧은 화면 대응 (가로모드 등) */
+/* 🛡️ [안전장치 수정] 기준 높이 완화 */
 /* ========================================= */
 
-/* 화면 높이가 800px 이하이면 (키 작은 화면) */
-@media screen and (max-height: 800px) {
+/* 기존 800px -> 600px로 변경 */
+/* 이제 노트북(약 700~900px)에서는 스냅이 정상 작동합니다 */
+@media screen and (max-height: 600px) {
     
-    /* 1. 억지로 한 화면(100vh)에 구겨 넣기 금지 */
+    html { scroll-snap-type: none !important; }
+    
     .snap-page {
-        height: auto !important;       /* 높이 자동 */
-        min-height: 100vh;             /* 최소한 화면만큼은 되게 */
-        padding-top: 60px !important;  /* 여백 조금 줄임 */
+        height: auto !important;
+        min-height: 100vh;
+        padding-top: 60px !important;
         padding-bottom: 60px !important;
-        justify-content: flex-start;   /* 위에서부터 차례대로 배치 */
+        justify-content: flex-start;
     }
 
-    /* 2. 제목이랑 내용물 간격 좁히기 */
     .page-gallery h2,
     .page-info h3,
     .page-map h3 {
@@ -593,18 +594,12 @@ html {
         margin-top: 40px !important;
     }
 
-    /* 3. 내용물 높이를 %가 아닌 고정값(px)으로 변경 */
-    /* 화면이 너무 납작해지면 %는 위험함 */
+    /* 내용물 높이 고정 */
     .detail-gallery-fullscreen,
     .map-frame-wrapper,
     .page-info .info-content-wrapper {
-        height: 500px !important;      /* 안전하게 고정 높이 사용 */
+        height: 400px !important; /* 높이도 조금 줄임 */
         max-height: none !important;
-    }
-
-    /* 4. 스냅 스크롤 기능 끄기 (불편함 방지) */
-    html {
-        scroll-snap-type: none !important;
     }
 }
 
