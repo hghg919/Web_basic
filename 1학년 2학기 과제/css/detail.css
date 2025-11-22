@@ -264,27 +264,41 @@ html {
     visibility: visible;
 }
 
-/* 2. 라이트박스 (이미지 확대) */
+/* 2. 라이트박스 (배경) */
 .lightbox {
-    display: none;
+    display: none; 
     position: fixed;
     z-index: 1000;
-    padding-top: 60px;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(0,0,0,0.9);
+    
+    /* 화면 정중앙 정렬 */
+    justify-content: center;
+    align-items: center;
 }
 
+/* 📦 이미지와 버튼을 감싸는 박스 */
+.lightbox-wrapper {
+    position: relative; /* 닫기 버튼의 기준점 */
+    display: inline-block; /* 내용물 크기만큼만 잡힘 */
+    max-width: 90%;
+    max-height: 90vh;
+}
+
+/* 이미지 스타일 */
 .lightbox-content {
-    margin: auto;
     display: block;
-    width: 80%;
-    max-width: 1000px;
-    max-height: 80vh;
+    width: auto;
+    height: auto;
+    max-width: 100%; /* 부모(wrapper) 크기에 맞춤 */
+    max-height: 90vh; /* 화면 높이 넘어가지 않게 */
     object-fit: contain;
+    border-radius: 4px; /* 살짝 둥글게 */
+    box-shadow: 0 0 20px rgba(0,0,0,0.5); /* 이미지 그림자 */
+    
     animation-name: zoom;
     animation-duration: 0.3s;
 }
@@ -294,18 +308,35 @@ html {
     to {transform:scale(1)}
 }
 
+/* 닫기 버튼 (X) 스타일 */
 .close-lightbox {
     position: absolute;
-    top: 30px;
-    right: 50px;
-    color: #f1f1f1;
+    
+    /* 📍 사진 기준 우측 상단 배치 */
+    top: 10px;
+    right: 15px;
+    
+    color: #ffffff;
     font-size: 40px;
     font-weight: bold;
-    transition: 0.3s;
+    line-height: 1;
     cursor: pointer;
+    z-index: 1001;
+    
+    /* 사진이 흰색이어도 잘 보이게 그림자 추가 */
+    text-shadow: 0 0 5px rgba(0,0,0,0.8);
+    transition: transform 0.2s;
 }
 
-.close-lightbox:hover { color: #bbb; }
+.close-lightbox:hover {
+    color: #ffd45e;
+    transform: scale(1.2);
+}
+
+@keyframes zoom {
+    from {transform:scale(0.8); opacity: 0;} 
+    to {transform:scale(1); opacity: 1;}
+}
 
 /* 3. 우측 퀵 네비게이션 */
 .side-nav {
@@ -392,54 +423,145 @@ html {
 /* ⚠️ 헤더(.top-header), 메뉴, 로고 스타일은 common.css에서 통합 관리하므로 삭제됨 */
 
 /* ========================================= */
-/* 📏 [4단계 반응형] Detail (상세정보) */
+/* 📱 [반응형 & 레이아웃 보정] Detail 최종 통합본 */
 /* ========================================= */
 
-/* 1. 스마트폰 (767px 이하) - 갤러리 세로 배치, 스냅 해제 */
+/* ----------------------------------------- */
+/* 1. 스마트폰 (767px 이하) - 세로 배치 & 스크롤 */
+/* ----------------------------------------- */
 @media screen and (max-width: 767px) {
-    html { scroll-snap-type: none; } /* 스냅 불편하면 해제 */
+    /* 스크롤 스냅 해제 (모바일은 터치 스크롤이 자연스러움) */
+    html { scroll-snap-type: none; }
     .snap-page { height: auto; min-height: 100vh; padding: 80px 20px 40px 20px; }
     
-    /* 갤러리: 이미지 위, 썸네일 아래(가로스크롤) */
-    .detail-gallery-fullscreen { flex-direction: column; height: auto; border: none; background: transparent;}
-    .detail-gallery-fullscreen .main-image-container { width: 100%; height: 250px; }
-    .detail-gallery-fullscreen .thumbnail-list { 
-        width: 100%; height: auto; flex-direction: row; overflow-x: auto; gap: 10px; padding: 5px 0;
+    /* 갤러리 레이아웃 변경 (가로 -> 세로) */
+    .detail-gallery-fullscreen { 
+        flex-direction: column; 
+        height: auto; 
+        background: transparent; 
+        border: none;
+        padding: 0;
     }
-    .detail-gallery-fullscreen .thumbnail-list .thumbnail { width: 70px; height: 50px; flex-shrink: 0; }
     
-    /* 사이드바 숨김 */
-    .side-nav { display: none !important; }
+    /* 메인 이미지 */
+    .detail-gallery-fullscreen .main-image-container { 
+        width: 100%; 
+        height: 250px; /* 모바일 높이 고정 */
+        margin-bottom: 10px;
+    }
+    
+    /* 썸네일 리스트 (가로 스크롤) */
+    .detail-gallery-fullscreen .thumbnail-list { 
+        width: 100%; 
+        height: auto; 
+        flex-direction: row; /* 가로 나열 */
+        overflow-x: auto;    /* 옆으로 스크롤 가능 */
+        justify-content: flex-start;
+        gap: 10px;
+    }
+    
+    .detail-gallery-fullscreen .thumbnail-list .thumbnail { 
+        width: 80px; 
+        height: 60px; 
+        flex-shrink: 0; /* 찌그러짐 방지 */
+    }
+    
+    /* 정보 테이블 줄바꿈 */
     .info-table li { flex-wrap: wrap; }
-    .info-table .title { width: 100%; margin-bottom: 5px; }
+    .info-table .title { width: 100%; margin-bottom: 5px; color: #333; }
     .info-table .data { padding-left: 0; margin-left: 40px; }
+    
+    /* 사이드바 숨김, 지도 높이 조절 */
+    .side-nav { display: none !important; }
+    .map-frame-wrapper { height: 300px; }
 }
 
-/* 2. 태블릿 (768px ~ 1023px) - 갤러리 비율 조정 */
+/* ----------------------------------------- */
+/* 2. 태블릿 (768px ~ 1023px) */
+/* ----------------------------------------- */
 @media screen and (min-width: 768px) and (max-width: 1023px) {
     .snap-page { padding: 80px 30px; }
     
-    /* 갤러리: 가로 배치 유지하되 비율 변경 (6:4) */
-    .detail-gallery-fullscreen { width: 100%; height: 50vh; }
+    /* 갤러리 비율 조정 (이미지 좀 더 작게) */
+    .detail-gallery-fullscreen { height: 50vh; }
     .detail-gallery-fullscreen .main-image-container { width: 60%; }
     .detail-gallery-fullscreen .thumbnail-list { width: 38%; }
     
-    .side-nav { display: none; } /* 태블릿까지는 사이드바 숨김 */
+    .side-nav { display: none; }
 }
 
-/* 3. 노트북 (1024px ~ 1439px) - 기본 비율 (7:3) */
-@media screen and (min-width: 1024px) and (max-width: 1439px) {
-    .detail-gallery-fullscreen { height: 60vh; }
-    .side-nav { display: flex; } /* 사이드바 보이기 시작 */
-}
+/* ----------------------------------------- */
+/* 3. 노트북 (1024px ~ 1439px) */
+/* ----------------------------------------- */
+/* 회원님 작업 환경: 기본 스타일(width: 90% 등)을 그대로 따릅니다 */
 
-/* 4. 데스크탑 (1440px 이상) - 넓은 화면 활용 */
+
+/* ========================================= */
+/* 💻 데스크탑 (1440px 이상) - 여백 및 밸런스 긴급 수정 */
+/* ========================================= */
 @media screen and (min-width: 1440px) {
-    .snap-page { padding-left: 15%; padding-right: 15%; } /* 양쪽 여백을 많이 줌 */
-    .detail-gallery-fullscreen { height: 70vh; } /* 갤러리 더 높게 */
+
+    /* 1. 스냅 페이지 레이아웃 (공통) */
+    .snap-page {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        /* 🔥 [핵심 수정] 위아래 강제 여백 확보 */
+        /* 이 패딩 때문에 내용물이 절대 천장/바닥에 붙지 않습니다 */
+        padding-top: 80px;
+        padding-bottom: 80px; 
+    }
+
+    /* 2. 제목 스타일 */
+    .page-gallery h2,
+    .page-info h3,
+    .page-map h3 {
+        width: 1400px;
+        text-align: center;
+        /* 제목과 본문 사이 간격 */
+        margin-bottom: 40px; 
+        font-size: 3rem;
+        /* 제목 위로도 공간 확보 */
+        margin-top: 20px;
+    }
+
+    /* 3. 박스 공통 (너비 제한) */
+    .detail-gallery-fullscreen,
+    .map-frame-wrapper,
+    .page-info .info-content-wrapper {
+        width: 1400px !important;
+        margin: 0 auto;
+    }
+
+    /* 4. 갤러리 높이 (유지) */
+    .detail-gallery-fullscreen {
+        height: 60vh !important; 
+    }
+
+    /* 5. 🔥 [지도 수정] 높이 줄이고 여백 확보 */
+    .map-frame-wrapper {
+        /* 너무 크면 위아래가 붙으니 60% 정도로 줄임 */
+        height: 60vh !important; 
+        border: 1px solid #eee;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    /* 6. 정보창 스타일 */
+    .page-info .info-content-wrapper {
+        height: auto;
+        max-height: 60vh; 
+        overflow-y: auto; 
+        overflow-x: hidden; 
+        
+        padding: 40px; 
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
     
-    /* 폰트 키움 */
-    .page-gallery h2 { font-size: 4rem; }
     .info-table li { font-size: 1.2rem; padding: 1.5rem 0; }
     .detail-text p { font-size: 1.2rem; line-height: 2; }
 }

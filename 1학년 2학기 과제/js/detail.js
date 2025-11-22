@@ -117,10 +117,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightbox = document.getElementById('lightbox-modal');
     const lightboxImg = document.getElementById('lightbox-img');
     const closeSpan = document.querySelector('.close-lightbox');
-
+    
     // 메인 이미지 클릭 시 열기
     mainImage.addEventListener('click', function() {
-        lightbox.style.display = "block";
+        // lightbox.style.display = "block";  // 👈 이 줄을 지우거나 주석 처리하고
+        lightbox.style.display = "flex";      // 👈 🔥 이 줄을 추가하세요! (flex로 변경)
         lightboxImg.src = this.src;
     });
 
