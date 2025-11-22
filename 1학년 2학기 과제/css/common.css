@@ -3,381 +3,194 @@
 /* ========================================= */
 
 /* 기본 스타일 초기화 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    width: 100%;
-    height: 100%;
-}
-
-body {
-    /* 기본 폰트 설정 */
-    font-family: 'Noto Sans KR', sans-serif;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-ul {
-    list-style: none;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; }
+body { font-family: 'Noto Sans KR', sans-serif; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
 
 /* ========================================= */
 /* --- [통합] 헤더 (Header) --- */
 /* ========================================= */
-
 .top-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 85px;
-    
-    /* 💡 기본 배경: Detail 페이지 기준 (흰색) */
+    position: fixed; top: 0; left: 0; width: 100%; height: 85px;
     background-color: white; 
     border-bottom: 1px solid #ddd;
-    
     z-index: 3000;
-    display: flex;
-    justify-content: center; /* 내부 내용 중앙 정렬 */
+    display: flex; justify-content: center;
 }
 
-/* ========================================= */
-/* --- 1. [헤더 레이아웃] 양쪽 넓히기 --- */
-/* ========================================= */
-
 .header-inner {
-    /* 💡 1200px 제한을 없애고 화면을 꽉 채우게(100%) 변경 */
-    width: 100%;
-    max-width: 100%; 
-    
-    height: 100%;
-    display: flex;
-    align-items: center;
-    
-    /* 💡 양쪽 끝 여백 조절 (이 숫자를 줄이면 더 끝으로 붙습니다) */
+    width: 100%; max-width: 100%; height: 100%;
+    display: flex; align-items: center;
     padding: 0 30px; 
 }
 
 /* --- 로고 스타일 --- */
 .header-logo-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: black;
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none; color: black;
 }
-
-.header-logo-wrapper img {
-    height: 40px;
-    width: auto;
-}
-
+.header-logo-wrapper img { height: 40px; width: auto; }
 .header-logo-wrapper span {
-    font-family: 'Yeon Sung', cursive;
-    font-size: 1.8rem;
-    padding-top: 4px; 
+    font-family: 'Yeon Sung', cursive; font-size: 1.8rem; padding-top: 4px; 
 }
 
 /* 숫자 4 애니메이션 */
-.four-colors {
-    animation: changeFourColors 6s infinite;
-    display: inline-block;
-}
-
+.four-colors { animation: changeFourColors 6s infinite; display: inline-block; }
 @keyframes changeFourColors {
-    0%, 100% { color: #b0e0e6; } /* 거제 */
-    25% { color: #a0e6b4; }      /* 창원 */
-    50% { color: #D2B48C; }      /* 김해 */
-    75% { color: #f08080; }      /* 통영 */
+    0%, 100% { color: #b0e0e6; } 25% { color: #a0e6b4; } 
+    50% { color: #D2B48C; } 75% { color: #f08080; }
 }
 
 /* ========================================= */
-/* --- 2. [메뉴 위치] 오른쪽으로 보내기 --- */
+/* --- 2. [메뉴 위치] --- */
 /* ========================================= */
-
 .main-menu {
-    display: flex;
-    gap: 40px; /* 메뉴 글자들끼리의 간격 */
-    
-    /* 💡 [핵심 마법] 왼쪽 여백을 '자동(auto)'으로 채우면 메뉴가 오른쪽 끝으로 밀려납니다 */
-    margin-left: auto; 
-    
-    /* 💡 메뉴와 언어 버튼 사이의 간격 */
-    margin-right: 50px; 
+    display: flex; gap: 40px; 
+    margin-left: auto; margin-right: 50px; 
 }
 
-.main-menu > div { /* 드롭다운 상위 메뉴 */
-    color: #333;
-    font-size: 1.1rem;
-    font-weight: bold;
-    padding: 15px 0;
-    cursor: pointer;
-    position: relative;
-    font-family: Arial, sans-serif; 
+.main-menu > div { 
+    color: #333; font-size: 1.1rem; font-weight: bold; padding: 15px 0;
+    cursor: pointer; position: relative; font-family: Arial, sans-serif; 
 }
 
-/* 메뉴 밑줄 애니메이션 */
 .main-menu > div::after {
-    content: "";
-    width: 0%;
-    height: 3px;
-    background: #ffd45e;
-    position: absolute;
-    left: 0;
-    bottom: 5px;
-    transition: 0.3s;
+    content: ""; width: 0%; height: 3px; background: #ffd45e;
+    position: absolute; left: 0; bottom: 5px; transition: 0.3s;
 }
+.main-menu > div:hover::after { width: 100%; }
 
-.main-menu > div:hover::after {
-    width: 100%;
-}
-
-/* --- 드롭다운 메뉴 스타일 --- */
-.main-dropdown {
-    position: relative;
-}
-.main-dropdown:hover .main-dropdown-menu {
-    display: flex;
-}
+/* --- 드롭다운 메뉴 --- */
+.main-dropdown { position: relative; }
+.main-dropdown:hover .main-dropdown-menu { display: flex; }
 
 .main-dropdown-menu {
-    position: absolute;
-    top: 55px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    background-color: white;
-    padding: 15px 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    border: 1px solid #eee;
-    min-width: 160px;
-    z-index: 9999;
+    position: absolute; top: 55px; left: 50%; transform: translateX(-50%);
+    display: none; flex-direction: column; gap: 10px;
+    background-color: white; padding: 15px 20px; border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15); border: 1px solid #eee; min-width: 160px; z-index: 9999;
 }
 
 .main-dropdown-menu a {
-    font-family: Arial, sans-serif;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #333;
-    text-decoration: none;
-    white-space: nowrap;
-    text-align: center;
-    display: block;
-    padding: 5px 0;
-    transition: color 0.2s;
+    font-family: Arial, sans-serif; font-size: 1rem; font-weight: bold;
+    color: #333; text-decoration: none; white-space: nowrap; text-align: center;
+    display: block; padding: 5px 0; transition: color 0.2s;
 }
+.main-dropdown-menu a:hover { color: #007bff; }
 
-.main-dropdown-menu a:hover {
-    color: #007bff;
-}
-
-/* --- 언어 선택 드롭다운 --- */
-.lang-dropdown-wrapper {
-    position: relative;
-    display: inline-block;
-}
+/* --- 언어 선택 드롭다운 (데스크탑 기본) --- */
+.lang-dropdown-wrapper { position: relative; display: inline-block; }
 
 .lang-dropbtn {
-    background-color: transparent;
-    color: #333;
-    font-size: 0.95rem;
-    font-weight: bold;
-    border: 1px solid #ddd;
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-family: 'Noto Sans KR', sans-serif;
-    transition: all 0.3s ease;
+    background-color: transparent; color: #333; font-size: 0.95rem; font-weight: bold;
+    border: 1px solid #ddd; padding: 8px 15px; border-radius: 20px; cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif; transition: all 0.3s ease;
 }
-
-.lang-dropbtn:hover {
-    background-color: #f2f2f2;
-}
+.lang-dropbtn:hover { background-color: #f2f2f2; }
 
 .lang-dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 45px;
-    background-color: #fff;
-    min-width: 100px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15);
-    border-radius: 10px;
-    border: 1px solid #eee;
-    overflow: hidden;
-    z-index: 9999;
+    display: none; position: absolute; right: 0; top: 45px;
+    background-color: #fff; min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15); border-radius: 10px; border: 1px solid #eee;
+    overflow: hidden; z-index: 9999;
 }
-
 .lang-dropdown-content a {
-    color: #333;
-    padding: 10px 15px;
-    text-decoration: none;
-    display: block;
-    font-size: 0.9rem;
-    transition: background 0.2s;
+    color: #333; padding: 10px 15px; text-decoration: none; display: block;
+    font-size: 0.9rem; transition: background 0.2s;
 }
+.lang-dropdown-content a:hover { background-color: #f8f9fa; color: #007bff; }
+.show-lang { display: block; }
 
-.lang-dropdown-content a:hover {
-    background-color: #f8f9fa;
-    color: #007bff;
-}
+/* 햄버거 버튼 (기본 숨김) */
+.hamburger-btn { display: none; }
 
-.show-lang {
-    display: block;
-}
+/* --- 지역별 고유색 (호버) --- */
+.menu-changwon:hover > div { color: #a0e6b4 !important; }
+.menu-geoje:hover > div { color: #b0e0e6 !important; }
+.menu-tongyeong:hover > div { color: #f08080 !important; }
+.menu-gimhae:hover > div { color: #D2B48C !important; }
+
 
 /* ========================================= */
 /* --- [통합] 푸터 (Footer) --- */
 /* ========================================= */
-
 .footer {
-    width: 100%;
-    background-color: #f2f2f2; /* 회색 배경 */
-    padding: 3rem 0;           /* 위아래 여백 */
-    font-size: 0.9rem;
-    color: #555;
-    border-top: 1px solid #e0e0e0;
+    width: 100%; background-color: #f2f2f2; padding: 3rem 0;
+    font-size: 0.9rem; color: #555; border-top: 1px solid #e0e0e0;
 }
-
-/* ========================================= */
-/* --- [푸터 레이아웃] 헤더와 동일하게 좌측 정렬 --- */
-/* ========================================= */
 
 .footer-inner {
-    /* 💡 1200px 제한을 없애고 화면 전체 사용 */
-    width: 100%;
-    max-width: 100%; 
-    
-    /* 중앙 정렬(margin: 0 auto) 제거 */
-    margin: 0; 
-    
-    /* 💡 헤더(.header-inner)와 똑같은 여백(30px) 적용 */
-    padding: 0 30px; 
-    
-    /* 세로로 쌓고 왼쪽 정렬 (기존 유지) */
-    display: flex;
-    flex-direction: column; 
-    align-items: flex-start; 
-    gap: 1.5rem; 
+    width: 100%; max-width: 100%; margin: 0; padding: 0 30px;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem;
 }
 
-/* 1. 메뉴 링크 */
-.footer-menu {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    margin-left: -15px;
-}
+.footer-menu { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin-left: -15px; }
+.footer-menu li { display: flex; align-items: center; }
+.footer-menu li a { color: #555; text-decoration: none; padding: 0 15px; font-weight: 500; }
+.footer-menu li::after { content: ""; display: block; width: 1px; height: 12px; background-color: #bbb; }
+.footer-menu li:last-child::after { display: none; }
 
-.footer-menu li {
-    display: flex;
-    align-items: center;
-}
+.copyright p { color: #888; margin: 0; text-align: left; line-height: 1.4; }
 
-.footer-menu li a {
-    color: #555;
-    text-decoration: none;
-    padding: 0 15px;
-    font-weight: 500;
-}
+.sns-icons { display: flex; gap: 15px; list-style: none; margin: 0; padding: 0; }
+.sns-icons img { width: 32px; height: 32px; border-radius: 4px; opacity: 0.8; transition: opacity 0.3s; }
+.sns-icons img:hover { opacity: 1; }
 
-.footer-menu li::after {
-    content: "";
-    display: block;
-    width: 1px;
-    height: 12px;
-    background-color: #bbb;
-}
-
-.footer-menu li:last-child::after {
-    display: none;
-}
-
-/* 2. 저작권 텍스트 */
-.copyright p {
-    color: #888;
-    margin: 0;
-    text-align: left;
-    line-height: 1.4;
-}
-
-/* 3. SNS 아이콘 */
-.sns-icons {
-    display: flex; 
-    gap: 15px; 
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.sns-icons img {
-    width: 32px;
-    height: 32px;
-    border-radius: 4px;
-    opacity: 0.8;
-    transition: opacity 0.3s;
-}
-
-.sns-icons img:hover {
-    opacity: 1;
-}
 
 /* ========================================= */
-/* --- [추가] 메뉴 호버 시 지역별 고유색 적용 --- */
-/* ========================================= */
-
-/* 1. 창원: #a0e6b4 (연두) */
-.menu-changwon:hover > div {
-    color: #a0e6b4 !important; /* 기존 검정색 덮어쓰기 */
-}
-/* 밑줄 색깔도 같이 바꾸고 싶다면 아래 코드 주석 해제 */
-/* .menu-changwon:hover > div::after { background: #a0e6b4; } */
-
-
-/* 2. 거제: #b0e0e6 (하늘) */
-.menu-geoje:hover > div {
-    color: #b0e0e6 !important;
-}
-/* .menu-geoje:hover > div::after { background: #b0e0e6; } */
-
-
-/* 3. 통영: #f08080 (분홍) */
-.menu-tongyeong:hover > div {
-    color: #f08080 !important;
-}
-/* .menu-tongyeong:hover > div::after { background: #f08080; } */
-
-
-/* 4. 김해: #D2B48C (황토) */
-.menu-gimhae:hover > div {
-    color: #D2B48C !important;
-}
-/* .menu-gimhae:hover > div::after { background: #D2B48C; } */
-
-/* ========================================= */
-/* 📱 [반응형] Common - 1440px/1441px 분리 수정 */
+/* 📱 [반응형] Common - 최종 수정 (중복 제거됨) */
 /* ========================================= */
 
 /* 1. 스마트폰 (767px 이하) */
 @media screen and (max-width: 767px) {
-    .top-header { height: auto; padding: 10px 0; background: white !important; }
-    .header-inner { flex-direction: column; gap: 10px; padding: 0 15px; }
-    .header-logo-wrapper img { height: 30px; }
-    .header-logo-wrapper span { font-size: 1.5rem; }
-    .main-menu { margin: 0; gap: 5px; width: 100%; justify-content: center; flex-wrap: wrap; }
-    .main-menu > div { padding: 5px 10px; font-size: 0.95rem; }
-    .lang-dropdown-wrapper { display: none; }
+    .top-header { height: 60px; background: white !important; padding: 0; }
+    
+    .header-inner { 
+        display: flex; flex-direction: row; align-items: center; 
+        justify-content: space-between; /* 🔥 양 끝 정렬 (로고 vs 버튼그룹) */
+        padding: 0 15px; height: 100%; width: 100%;
+    }
+    
+    /* 로고 (왼쪽) */
+    .header-logo-wrapper {
+        white-space: nowrap; flex-shrink: 0; display: flex; align-items: center;
+        max-width: 60%; 
+    }
+    .header-logo-wrapper img { height: 24px; }
+    .header-logo-wrapper span { font-size: 1.1rem; }
+
+    /* 🔥 우측 버튼 그룹 (오른쪽 끝) */
+    .header-right-group {
+        display: flex; align-items: center; gap: 10px; 
+    }
+
+    /* 언어 버튼 */
+    .lang-dropdown-wrapper { display: block !important; }
+    .lang-dropbtn {
+        font-size: 0.75rem; padding: 4px 8px; height: auto; line-height: 1.2;
+        border: 1px solid #ddd; border-radius: 15px; background-color: #fff;
+    }
+
+    /* 햄버거 버튼 */
+    .hamburger-btn {
+        display: block; background: none; border: none;
+        font-size: 1.6rem; cursor: pointer; padding: 0; margin: 0; line-height: 1;
+    }
+
+    /* 메뉴 (햄버거 눌러야 나옴) */
+    .main-menu {
+        position: absolute; top: 60px; left: 0; width: 100%;
+        background: white; flex-direction: column; gap: 0;
+        border-bottom: 1px solid #ddd; box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        display: none; 
+    }
+    .main-menu.active { display: flex; }
+    .main-menu > div { width: 100%; text-align: center; padding: 15px 0; border-bottom: 1px solid #f0f0f0; }
+    .main-dropdown-menu { position: static; box-shadow: none; border: none; background: #f9f9f9; transform: none; padding: 10px 0; display: none; }
+    .main-dropdown:hover .main-dropdown-menu { display: flex; }
+    
     .footer-inner { align-items: center; text-align: center; }
     .footer-menu { justify-content: center; margin-left: 0; }
 }
@@ -391,15 +204,12 @@ ul {
 }
 
 /* 3. 노트북 (1024px ~ 1440px) */
-/* 회원님 노트북은 여기서 걸립니다 -> 화면 꽉 채우는 기본 스타일 유지 */
+/* 기본 스타일 유지 */
 
-/* 4. 💻 데스크탑 (1441px 이상) - 여기서부터 제한! */
+/* 4. 💻 데스크탑 (1441px 이상) */
 @media screen and (min-width: 1441px) {
-    .header-inner, 
-    .footer-inner {
-        width: 100%;
-        max-width: 1440px; /* 1440px로 제한 */
-        margin: 0 auto;    /* 중앙 정렬 */
+    .header-inner, .footer-inner {
+        width: 100%; max-width: 1440px; margin: 0 auto;
     }
     .header-logo-wrapper span { font-size: 2rem; }
     .main-menu { gap: 50px; font-size: 1.1rem; }

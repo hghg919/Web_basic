@@ -41,3 +41,11 @@ window.addEventListener('click', function(event) {
         }
     }
 });
+
+/* ========================================= */
+/* --- 🍔 모바일 햄버거 메뉴 토글 --- */
+/* ========================================= */
+function toggleMobileMenu() {
+    const menu = document.querySelector('.main-menu');
+    menu.classList.toggle('active'); // 클래스를 뗐다 붙였다 함
+}

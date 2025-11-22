@@ -430,74 +430,80 @@ html {
 /* ========================================= */
 
 /* ========================================= */
-/* 1. 스마트폰 (767px 이하) - 갤러리 완벽 수정 */
+/* 1. 스마트폰 (767px 이하) - 최종 수정 */
 /* ========================================= */
 @media screen and (max-width: 767px) {
     html { scroll-snap-type: none; }
     
-    /* 전체 여백 설정 */
-    .snap-page { height: auto; min-height: 100vh; padding: 85px 20px 60px 20px; }
-
-    /* 제목 중앙 정렬 및 폰트 조절 */
-    .snap-page.page-gallery,
-    .snap-page.page-map {
+    /* 🔥 [수정] 중앙 정렬 제거 -> 위에서부터 시작 (flex-start) */
+    .snap-page { 
+        height: auto; 
+        min-height: 100vh; 
+        padding: 85px 20px 60px 20px; /* 헤더 공간 확보 */
+        
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start; /* 👈 다시 위로 붙임 */
+        align-items: center;         /* 가로만 중앙 정렬 */
+    }
+
+    /* 갤러리, 지도 페이지도 위에서부터 시작 */
+    .snap-page.page-gallery,
+    .snap-page.page-map {
+        justify-content: flex-start; 
     }
 
     .page-gallery h2 {
-        font-size: 1.7rem;      /* 제목 크기 */
-        word-break: keep-all;   /* 단어 줄바꿈 방지 */
+        font-size: 1.7rem;
+        word-break: keep-all;
         line-height: 1.3;
         gap: 10px;
         align-items: center;
+        margin-bottom: 20px; 
+        margin-top: 10px;
     }
     
-    /* 갤러리 박스 (투명 배경, 테두리 없음) */
+    /* 갤러리 박스 */
     .detail-gallery-fullscreen { 
         flex-direction: column; 
-        height: auto !important; /* 높이 자동 */
+        height: auto !important; 
         background: transparent; 
         border: none; 
-        padding: 0;
+        padding: 0; 
         width: 100%;
     }
     
-    /* 🔥 [메인 이미지] 시원하게 키우기 */
+    /* 메인 이미지 */
     .detail-gallery-fullscreen .main-image-container { 
         width: 100%; 
-        height: 40vh;  /* 화면 높이의 40% 차지 (큼직하게) */
-        max-height: 400px;
-        margin-bottom: 15px; /* 썸네일과 간격 */
+        height: 40vh; 
+        max-height: 400px; 
+        margin-bottom: 15px; 
         border-radius: 10px;
     }
     
-    /* 🔥 [썸네일 리스트] 가로 스크롤 강제 적용 */
+    /* 🔥 [썸네일] 가로 스크롤 복구 */
     .detail-gallery-fullscreen .thumbnail-list { 
         width: 100%; 
         height: auto; 
-        
-        display: flex !important;        /* 플렉스 박스 */
-        flex-direction: row !important;  /* 가로 방향 */
-        flex-wrap: nowrap !important;    /* ⚠️ 줄바꿈 절대 금지 */
-        overflow-x: auto !important;     /* 가로 스크롤 허용 */
-        
-        justify-content: flex-start;     /* 왼쪽부터 나열 */
-        gap: 10px;
-        padding-bottom: 10px; /* 스크롤바 공간 */
+        display: flex !important; 
+        flex-direction: row !important; 
+        flex-wrap: nowrap !important;    /* 줄바꿈 금지 */
+        overflow-x: auto !important;     /* 가로 스크롤 */
+        justify-content: flex-start; 
+        gap: 10px; 
+        padding-bottom: 10px;
     }
     
-    /* 🔥 [썸네일 사진] 찌그러짐 방지 */
     .detail-gallery-fullscreen .thumbnail-list .thumbnail { 
-        width: 90px !important;   /* 너비 고정 */
-        height: 70px !important;  /* 높이 고정 */
-        flex-shrink: 0 !important;/* ⚠️ 절대 찌그러지지 않게 함 */
-        object-fit: cover;
+        width: 90px !important; 
+        height: 70px !important; 
+        flex-shrink: 0 !important;       /* 찌그러짐 방지 */
+        object-fit: cover; 
         border-radius: 5px;
     }
     
-    /* 기타 설정 (기존 유지) */
+    /* 기타 유지 */
     .info-table li { flex-wrap: wrap; }
     .info-table .title { width: 100%; margin-bottom: 5px; color: #333; }
     .info-table .data { padding-left: 0; margin-left: 40px; }
