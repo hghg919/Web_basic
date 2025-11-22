@@ -88,39 +88,25 @@ body {
 
 
 /* ========================================= */
-/* 📱 반응형 4단계 (위치/크기 조절) */
+/* 📱 [반응형] Index - 1440px/1441px 분리 수정 */
 /* ========================================= */
 
 /* 1. 스마트폰 (767px 이하) */
 @media screen and (max-width: 767px) {
-    .main-content h1 {
-        font-size: 3rem;
-        top: 40%;
-    }
-    .start-button {
-        font-size: 1rem;
-        padding: 10px 25px;
-        top: 60%;
-    }
+    .main-content h1 { font-size: 3rem; top: 40%; }
+    .start-button { font-size: 1rem; padding: 10px 25px; top: 60%; }
 }
 
 /* 2. 태블릿 (768px ~ 1023px) */
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-    .main-content h1 {
-        font-size: 5rem;
-        top: 40%;
-    }
-    .start-button {
-        font-size: 1.2rem;
-        padding: 12px 35px;
-        top: 58%;
-    }
+    .main-content h1 { font-size: 5rem; top: 40%; }
+    .start-button { font-size: 1.2rem; padding: 12px 35px; top: 58%; }
 }
 
-/* 3. 노트북 (1024px ~ 1439px) */
-@media screen and (min-width: 1024px) and (max-width: 1439px) {
+/* 3. 노트북 (1024px ~ 1440px) - 회원님 노트북 포함 */
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
     .main-content h1 {
-        font-size: 6.5rem;
+        font-size: 6.5rem; /* 노트북에 맞는 적당한 크기 */
         top: 35%;
     }
     .start-button {
@@ -130,10 +116,10 @@ body {
     }
 }
 
-/* 4. 데스크탑 (1440px 이상) */
-@media screen and (min-width: 1440px) {
+/* 4. 💻 데스크탑 (1441px 이상) - 대화면 모니터 */
+@media screen and (min-width: 1441px) {
     .main-content h1 {
-        font-size: 8rem;
+        font-size: 8rem;   /* 아주 크게 */
         top: 35%;
     }
     .start-button {

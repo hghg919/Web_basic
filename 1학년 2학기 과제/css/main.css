@@ -104,52 +104,33 @@
 }
 
 /* ========================================= */
-/* 📱 [반응형] Main (슬라이드 글자 & 버튼) */
-/* 기존 기능(자동넘김 등)은 절대 건드리지 않음 */
+/* 📱 [반응형] Main - 1440px/1441px 분리 수정 */
 /* ========================================= */
 
 /* 1. 스마트폰 (767px 이하) */
 @media screen and (max-width: 767px) {
-    /* 글자 크기 대폭 줄임 */
     .caption {
-        font-size: 1.5rem;   /* 약 24px */
-        bottom: 100px;       /* 하단 컨트롤과 겹치지 않게 */
-        left: 20px;          /* 왼쪽 여백 줄임 */
-        width: 90%;          /* 글자가 길면 줄바꿈 */
-        line-height: 1.3;
+        font-size: 1.5rem; bottom: 100px; left: 20px; width: 90%; line-height: 1.3;
     }
-
-    /* 컨트롤 버튼 작게 */
     .controls { bottom: 30px; gap: 15px; }
     .circle-btn { width: 35px; height: 35px; font-size: 14px; }
-    
-    /* 점 네비게이션 위치 */
     .dot-area { bottom: 10px; }
 }
 
 /* 2. 태블릿 (768px ~ 1023px) */
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-    .caption {
-        font-size: 2rem;     /* 약 32px */
-        bottom: 110px;
-        left: 30px;
-    }
+    .caption { font-size: 2rem; bottom: 110px; left: 30px; }
 }
 
-/* 3. 노트북 (1024px ~ 1439px) - 회원님 작업 환경 */
-/* 기존 스타일(40px) 그대로 유지 */
+/* 3. 노트북 (1024px ~ 1440px) - 회원님 노트북 포함 */
+/* 기본 스타일(left: 50px) 유지 */
 
-/* 4. 데스크탑 (1440px 이상) - 🔥 핵심: 글자 위치 정렬 */
-@media screen and (min-width: 1440px) {
+/* 4. 💻 데스크탑 (1441px 이상) */
+@media screen and (min-width: 1441px) {
     .caption {
-        font-size: 3rem;     /* 대화면이므로 글자 시원하게 키움 */
-        bottom: 150px;       /* 좀 더 위로 */
-        
-        /* 💡 [마법의 공식] 
-           화면이 아무리 넓어져도, 글자 시작 위치를 
-           헤더의 로고 라인(1440px 영역의 시작점)과 똑같이 맞춥니다.
-           (화면너비 - 1440px) / 2 + 여백 30px
-        */
+        font-size: 3rem;
+        bottom: 150px;
+        /* 1440px 중앙 정렬 라인에 맞춤 */
         left: calc((100% - 1440px) / 2 + 30px);
     }
 }

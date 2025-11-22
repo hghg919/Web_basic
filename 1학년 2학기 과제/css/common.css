@@ -366,28 +366,18 @@ ul {
 /* .menu-gimhae:hover > div::after { background: #D2B48C; } */
 
 /* ========================================= */
-/* 📱 [반응형 & 레이아웃 보정] */
-/* 기존 기능(애니메이션, 드롭다운 등) 100% 유지 */
+/* 📱 [반응형] Common - 1440px/1441px 분리 수정 */
 /* ========================================= */
 
-/* 1. 스마트폰 (767px 이하) - 메뉴 정리 */
+/* 1. 스마트폰 (767px 이하) */
 @media screen and (max-width: 767px) {
     .top-header { height: auto; padding: 10px 0; background: white !important; }
     .header-inner { flex-direction: column; gap: 10px; padding: 0 15px; }
-    
     .header-logo-wrapper img { height: 30px; }
     .header-logo-wrapper span { font-size: 1.5rem; }
-    
-    .main-menu { 
-        margin: 0; 
-        gap: 5px; 
-        width: 100%; 
-        justify-content: center; 
-        flex-wrap: wrap; 
-    }
+    .main-menu { margin: 0; gap: 5px; width: 100%; justify-content: center; flex-wrap: wrap; }
     .main-menu > div { padding: 5px 10px; font-size: 0.95rem; }
-    .lang-dropdown-wrapper { display: none; } /* 공간 부족 시 숨김 */
-    
+    .lang-dropdown-wrapper { display: none; }
     .footer-inner { align-items: center; text-align: center; }
     .footer-menu { justify-content: center; margin-left: 0; }
 }
@@ -400,20 +390,17 @@ ul {
     .main-menu > div { font-size: 1rem; }
 }
 
-/* 3. 노트북 (1024px ~ 1439px) */
-/* 기존 스타일 그대로 유지 (화면 꽉 차게) */
+/* 3. 노트북 (1024px ~ 1440px) */
+/* 회원님 노트북은 여기서 걸립니다 -> 화면 꽉 채우는 기본 스타일 유지 */
 
-/* 4. 데스크탑 (1440px 이상) - 🔥 요청하신 1440px 제한 적용! */
-@media screen and (min-width: 1440px) {
-    /* 헤더와 푸터 내용물을 1440px로 가두고 중앙 정렬 */
+/* 4. 💻 데스크탑 (1441px 이상) - 여기서부터 제한! */
+@media screen and (min-width: 1441px) {
     .header-inner, 
     .footer-inner {
         width: 100%;
-        max-width: 1440px;  /* 👈 핵심: 더 이상 늘어나지 않음 */
-        margin: 0 auto;     /* 👈 핵심: 남는 공간 좌우 균등 분배 (중앙 정렬) */
+        max-width: 1440px; /* 1440px로 제한 */
+        margin: 0 auto;    /* 중앙 정렬 */
     }
-    
-    /* 화면이 넓으니 글자나 간격도 시원하게 */
     .header-logo-wrapper span { font-size: 2rem; }
     .main-menu { gap: 50px; font-size: 1.1rem; }
     .footer { padding: 4rem 0; }
